@@ -17,7 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  ff_navigation_bar: ^0.0.1
+  ff_navigation_bar: ^0.0.1 
   #---------------
   flutter:
     sdk: flutter
@@ -52,11 +52,27 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+     - family: Kanit
+       fonts:
+        - asset: assets/fonts/Kanit-Black.ttf
+        - asset: assets/fonts/Kanit-BlackItalic.ttf
+        - asset: assets/fonts/Kanit-Bold.ttf
+        - asset: assets/fonts/Kanit-BoldItalic.ttf
+        - asset: assets/fonts/Kanit-ExtraBold.ttf 
+        - asset: assets/fonts/Kanit-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Kanit-ExtraLight.ttf
+        - asset: assets/fonts/Kanit-ExtraLightItalic.ttf
+        - asset: assets/fonts/Kanit-Italic.ttf
+        - asset: assets/fonts/Kanit-Light.ttf
+        - asset: assets/fonts/Kanit-LightItalic.ttf
+        - asset: assets/fonts/Kanit-Medium.ttf
+        - asset: assets/fonts/Kanit-MediumItalic.ttf
+        - asset: assets/fonts/Kanit-Regular.ttf
+        - asset: assets/fonts/Kanit-SemiBold.ttf
+        - asset: assets/fonts/Kanit-SemiBoldItalic.ttf
+        - asset: assets/fonts/Kanit-Thin.ttf
+        - asset: assets/fonts/Kanit-ThinItalic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
