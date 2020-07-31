@@ -1,6 +1,6 @@
 import 'package:amphawan/frontpage/home.dart';
+import 'package:amphawan/frontpage/menu.dart';
 import 'package:amphawan/system/font_style.dart';
-import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class frontpage extends StatefulWidget {
@@ -9,66 +9,90 @@ class frontpage extends StatefulWidget {
 }
 
 class _frontpageState extends State<frontpage> {
-  int selectedIndex = 0;
+  TextStyle textBottomBar =
+      TextStyle(fontFamily: FontStyles().fontFamily, color: Colors.grey);
+
+  int _selectedIndex = 0;
   final widgetOptions = [
     HomePage(),
     HomePage(),
     HomePage(),
     HomePage(),
-    HomePage(),
+    ListMenu(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('dd')),
       body: Container(
-          child: Center(
-        child: widgetOptions[selectedIndex],
-      )),
-      bottomNavigationBar: FFNavigationBar(
-        theme: FFNavigationBarTheme(
-          barBackgroundColor: Colors.white,
-          // selectedItemBorderColor: Colors.transparent,
-          selectedItemBackgroundColor: Colors.green,
-          selectedItemIconColor: Colors.white,
-          // selectedItemLabelColor: Colors.black,
-          // showSelectedItemShadow: false,
-          selectedItemTextStyle:
-              TextStyle(fontFamily: FontStyles().fontFamily, fontSize: 12),
-          unselectedItemTextStyle:
-              TextStyle(fontFamily: FontStyles().fontFamily, fontSize: 12),
-          // barHeight: 70,
+        child: Center(
+          child: widgetOptions.elementAt(_selectedIndex),
         ),
-        selectedIndex: selectedIndex,
-        onSelectTab: (index) {
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: new FloatingActionButton(
+        tooltip: 'Increment',
+        onPressed: () {
           setState(() {
-            selectedIndex = index;
+            _selectedIndex = 2;
           });
         },
-        items: [
-          FFNavigationBarItem(
-            iconData: Icons.home,
-            label: 'หน้าหลัก',
+        elevation: 0.0,
+        child: new Icon(Icons.person_outline),
+        backgroundColor: Colors.green,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 4.0,
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('หน้าหลัก',
+                style: TextStyle(fontSize: 12, fontFamily: 'Kanit')),
           ),
-          FFNavigationBarItem(
-            iconData: Icons.event,
-            label: 'กิจกรรมบุญ',
+          BottomNavigationBarItem(
+            icon: Icon(Icons.event),
+            title: Text(
+              'กิจกรรม',
+              style: TextStyle(fontSize: 12, fontFamily: 'Kanit'),
+            ),
           ),
-          FFNavigationBarItem(
-            iconData: Icons.people,
-            label: 'ปฏิบัติธรรม',
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.school,
+              color: Colors.white,
+            ),
+            title: Text('ปฎิบัติธรรม',
+                style: TextStyle(fontSize: 12, fontFamily: 'Kanit')),
           ),
-          FFNavigationBarItem(
-            iconData: Icons.play_circle_outline,
-            label: 'สื่อธรรมะ',
+          BottomNavigationBarItem(
+            icon: Icon(Icons.play_circle_outline),
+            title: Text('สื่อธรรมะ',
+                style: TextStyle(fontSize: 12, fontFamily: 'Kanit')),
           ),
-          FFNavigationBarItem(
-            iconData: Icons.view_list,
-            label: 'เมนูอื่น ๆ',
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu),
+            title: Text('เมนูอื่น ๆ',
+                style: TextStyle(fontSize: 12, fontFamily: 'Kanit')),
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        unselectedLabelStyle: textBottomBar,
+        onTap: onItemTapped,
       ),
     );
+  }
+
+  void onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }
