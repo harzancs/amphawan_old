@@ -18,6 +18,9 @@ environment:
 
 dependencies:
   ff_navigation_bar: ^0.0.1 
+  form_bloc: ^0.5.1
+  flutter_form_bloc: ^0.4.2
+  flutter_bloc: ^0.21.0
   #---------------
   flutter:
     sdk: flutter
@@ -43,7 +46,11 @@ flutter:
   assets:
     - assets/images/bg/bg.png
     - assets/images/information/amphawan.png
-    - assets/images/information/amphawan-1.png
+    - assets/images/information/amphawan-1.png 
+    ##LOGO
+    - assets/images/logo/facebook.png
+    - assets/images/logo/line.png
+    - assets/images/logo/google.png
   #  - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

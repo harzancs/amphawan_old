@@ -9,8 +9,6 @@ class AboutWat extends StatefulWidget {
 }
 
 class _AboutWatState extends State<AboutWat> {
-  TextStyle appBar =
-      TextStyle(fontFamily: FontStyles().fontFamily, color: Color(0xFF4D890E));
   TextStyle topic = TextStyle(
       fontFamily: FontStyles().fontFamily,
       color: Color(0xFF7F9525),
@@ -26,7 +24,7 @@ class _AboutWatState extends State<AboutWat> {
       appBar: AppBar(
         title: Text(
           'วัดอัมพวัน',
-          style: appBar,
+          style: TextStyles().titleBar,
         ),
         shape: CustomShapeBorder(),
         backgroundColor: Color(0xFFDFF1CD),
