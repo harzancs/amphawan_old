@@ -1,6 +1,6 @@
 import 'package:amphawan/frontpage/home.dart';
 import 'package:amphawan/frontpage/menu.dart';
-import 'package:amphawan/system/font_style.dart';
+import 'package:amphawan/styles/font_style.dart';
 import 'package:flutter/material.dart';
 
 class frontpage extends StatefulWidget {
@@ -11,6 +11,7 @@ class frontpage extends StatefulWidget {
 class _frontpageState extends State<frontpage> {
   TextStyle textBottomBar =
       TextStyle(fontFamily: FontStyles().fontFamily, color: Colors.grey);
+  String fontfamily = FontStyles().fontFamily;
 
   int _selectedIndex = 0;
   final widgetOptions = [

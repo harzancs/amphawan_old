@@ -1,4 +1,5 @@
-import 'package:amphawan/system/font_style.dart';
+import 'package:amphawan/styles/font_style.dart';
+import 'package:amphawan/view/information/about.dart';
 import 'package:flutter/material.dart';
 
 class ListMenu extends StatefulWidget {
@@ -37,7 +38,12 @@ class _ListMenuState extends State<ListMenu> {
                 child: Column(
                   children: <Widget>[
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AboutWat()),
+                        );
+                      },
                       child: Row(
                         children: <Widget>[
                           SizedBox(
