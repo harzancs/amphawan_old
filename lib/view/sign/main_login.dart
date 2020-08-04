@@ -2,6 +2,9 @@ import 'package:amphawan/styles/app_bar.dart';
 import 'package:amphawan/styles/font_style.dart';
 import 'package:amphawan/styles/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as JSON;
 
 class MainLogin extends StatefulWidget {
   @override
@@ -10,36 +13,117 @@ class MainLogin extends StatefulWidget {
 
 class _MainLoginState extends State<MainLogin> {
   final _formKey = GlobalKey<FormState>();
+  bool _isLoggedIn = false;
+  Map userProfile;
+  final facebookLogin = FacebookLogin();
+
+  _loginWithFB() async {
+    final result = await facebookLogin.logInWithReadPermissions(['email']);
+
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        final token = result.accessToken.token;
+        final graphResponse = await http.get(
+            'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=${token}');
+        final profile = JSON.jsonDecode(graphResponse.body);
+        print(profile);
+        setState(() {
+          userProfile = profile;
+          _isLoggedIn = true;
+        });
+        break;
+
+      case FacebookLoginStatus.cancelledByUser:
+        setState(() => _isLoggedIn = false);
+        break;
+      case FacebookLoginStatus.error:
+        setState(() => _isLoggedIn = false);
+        break;
+    }
+  }
+
+  _logout() {
+    facebookLogin.logOut();
+    setState(() {
+      _isLoggedIn = false;
+    });
+  }
+
   Widget signIn() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: MediaQuery.of(context).size.width * 0.75,
       child: Form(
         key: _formKey,
         child: Column(
           children: <Widget>[
             Container(
+              height: 50,
               decoration: BoxDecoration(
                   border: Border.all(
+                    color: Color(0xFFCECECE),
                     width: 1,
                   ),
-                  borderRadius: BorderRadius.circular(15)),
+                  borderRadius: BorderRadius.circular(5)),
               child: TextField(
+                  cursorColor: Colors.black,
                   keyboardType: TextInputType.text,
+                  style: TextStyle(fontFamily: FontStyles().fontFamily),
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       labelText: "Username",
+                      labelStyle: TextStyles().txtLableLogin,
                       icon: Icon(
                         Icons.person_outline,
                         color: Color(0xFF43C415),
                       ))),
             ),
             SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 50,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Color(0xFFCECECE),
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(5)),
               child: TextField(
+                  style: TextStyle(fontFamily: FontStyles().fontFamily),
+                  obscureText: true,
+                  autofocus: false,
+                  cursorColor: Colors.black,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
+                      border: InputBorder.none,
                       labelText: "Password",
+                      labelStyle: TextStyles().txtLableLogin,
                       icon: Icon(Icons.lock, color: Color(0xFF43C415)))),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  color: Color(0xFF52B64F),
+                  onPressed: () {},
+                  child: Text(
+                    'เข้าสู่ระบบ',
+                    style: TextStyles().txtBottomLogin,
+                  ),
+                ),
+                FlatButton(
+                  onPressed: () {},
+                  child: Text(
+                    'ลงทะเบียน',
+                    style: TextStyles().txtBottomRegister,
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
@@ -80,7 +164,9 @@ class _MainLoginState extends State<MainLogin> {
                           child: Card(
                               color: Color(0xFF4267B2),
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  _loginWithFB();
+                                },
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
@@ -94,7 +180,7 @@ class _MainLoginState extends State<MainLogin> {
                                     ),
                                     Text(
                                       'เข้าสู่ระบบโดยบัญชี facebook',
-                                      style: TextStyles().txt_login,
+                                      style: TextStyles().txtLogin,
                                     )
                                   ],
                                 ),
@@ -120,7 +206,7 @@ class _MainLoginState extends State<MainLogin> {
                                     ),
                                     Text(
                                       'เข้าสู่ระบบโดยบัญชี LINE',
-                                      style: TextStyles().txt_login,
+                                      style: TextStyles().txtLogin,
                                     )
                                   ],
                                 ),
@@ -146,7 +232,7 @@ class _MainLoginState extends State<MainLogin> {
                                     ),
                                     Text(
                                       'เข้าสู่ระบบโดยบัญชี Google',
-                                      style: TextStyles().txt_login_google,
+                                      style: TextStyles().txtLoginGoogle,
                                     )
                                   ],
                                 ),
@@ -154,7 +240,7 @@ class _MainLoginState extends State<MainLogin> {
                         ),
                         Padding(padding: EdgeInsets.all(10)),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.8,
+                          width: MediaQuery.of(context).size.width * 0.75,
                           child: Text(
                             'เข้าสู่ระบบ',
                             style: TextStyle(
@@ -164,7 +250,7 @@ class _MainLoginState extends State<MainLogin> {
                           ),
                         ),
                         signIn(),
-                        Padding(padding: EdgeInsets.all(50)),
+                        Padding(padding: EdgeInsets.all(5)),
                       ],
                     ),
                   ),

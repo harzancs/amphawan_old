@@ -22,13 +22,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0"
-  bloc:
-    dependency: transitive
-    description:
-      name: bloc
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.15.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -71,13 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
-  equatable:
-    dependency: transitive
-    description:
-      name: equatable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.6.1"
   ff_navigation_bar:
     dependency: "direct main"
     description:
@@ -90,39 +76,41 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_bloc:
+  flutter_facebook_login:
     dependency: "direct main"
     description:
-      name: flutter_bloc
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.21.0"
-  flutter_form_bloc:
+      path: "."
+      ref: "79ff08a"
+      resolved-ref: "79ff08a06e9aa38f4cce82bd5294a563f0884e79"
+      url: "https://github.com/roughike/flutter_facebook_login"
+    source: git
+    version: "1.2.0"
+  flutter_line_sdk:
     dependency: "direct main"
     description:
-      name: flutter_form_bloc
+      name: flutter_line_sdk
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.4"
-  flutter_keyboard_visibility:
-    dependency: transitive
-    description:
-      name: flutter_keyboard_visibility
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.7.0"
+    version: "1.3.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
-  form_bloc:
+  http:
     dependency: "direct main"
     description:
-      name: form_bloc
+      name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.2"
+    version: "0.12.2"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.4"
   image:
     dependency: transitive
     description:
@@ -144,13 +132,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.8"
-  mockito:
-    dependency: transitive
-    description:
-      name: mockito
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.1.1"
   path:
     dependency: transitive
     description:
@@ -186,13 +167,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
-  rxdart:
-    dependency: transitive
-    description:
-      name: rxdart
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.22.6"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -263,3 +237,4 @@ packages:
     version: "3.5.0"
 sdks:
   dart: ">=2.4.0 <3.0.0"
+  flutter: ">=1.12.0 <2.0.0"

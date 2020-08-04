@@ -8,10 +8,16 @@ class TextStyles {
   TextStyle titleBar =
       TextStyle(fontFamily: FontStyles().fontFamily, color: Color(0xFF4D890E));
   //Login
-  TextStyle txt_login = TextStyle(
+  TextStyle txtLogin = TextStyle(
       fontFamily: FontStyles().fontFamily, fontSize: 16, color: Colors.white);
-  TextStyle txt_login_google = TextStyle(
+  TextStyle txtLoginGoogle = TextStyle(
       fontFamily: FontStyles().fontFamily, fontSize: 16, color: Colors.black);
+  TextStyle txtLableLogin =
+      TextStyle(fontFamily: FontStyles().fontFamily, color: Colors.green);
+  TextStyle txtBottomLogin = TextStyle(
+      fontFamily: FontStyles().fontFamily, color: Colors.white, fontSize: 18);
+  TextStyle txtBottomRegister = TextStyle(
+      fontFamily: FontStyles().fontFamily, color: Colors.black, fontSize: 18);
 
   TextStyle txt_appBar =
       TextStyle(fontFamily: FontStyles().fontFamily, fontSize: 16);
